@@ -11,7 +11,6 @@
     "sync-desktop": "rsync -arv --exclude 'node_modules' --exclude '.git' --exclude 'node-v22.11.0-darwin-arm64' --exclude 'chrome-temp' ./ \"/Users/albertoaliceahernandez/Desktop/100% Wrestling Podcast Web/\""
   },
   "dependencies": {
-    "@rolldown/binding-darwin-arm64": "^1.2.1",
     "@types/three": "^0.186.0",
     "i18next": "^26.3.6",
     "lucide-react": "^1.28.0",
