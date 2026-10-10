@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Proxy functions correctly if called without prefix
+[[redirects]]
+  from = "/api/latest-live"
+  to = "/.netlify/functions/latest-live"
+  status = 200
+
+# Single Page App routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

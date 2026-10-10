@@ -1,0 +1,163 @@
+{
+  "navigation": {
+    "inicio": "Home",
+    "verYEscuchar": "Watch & Listen",
+    "calendario": "Schedule",
+    "comunidad": "Community",
+    "tienda": "Shop",
+    "links": "Affiliates",
+    "contacto": "Contact",
+    "mas": "More",
+    "apoyaPodcast": "Support the Podcast"
+  },
+  "home": {
+    "title": "Welcome",
+    "thisWeek": "This Week",
+    "viewFullCalendar": "View Full Schedule",
+    "completed": "Completed",
+    "live": "Live",
+    "upcoming": "Upcoming",
+    "watchYouTube": "Watch Live on YouTube",
+    "watchPatreon": "Watch on Patreon",
+    "badge": "#1 Wrestling Podcast in Spanish",
+    "heroTitle": "Wrestling Unfiltered",
+    "heroDesc": "Reviews, in-depth analysis and debate on WWE, AEW and major pro wrestling events. Direct opinions, no compromises and true community passion.",
+    "watchEp": "Watch on YouTube",
+    "listenPod": "Listen to Podcast",
+    "featuredBroadcast": "Featured Broadcast",
+    "featuredTitle": "Official WWE & AEW Reviews",
+    "featuredDesc": "Match-by-match breakdowns, premier storylines and raw wrestling analysis.",
+    "followUs": "Follow us wherever you prefer",
+    "youtubeSub": "Live shows, reviews & clips",
+    "spotifySub": "Audio and video podcast",
+    "appleSub": "High fidelity audio",
+    "patreon": {
+      "sectionTitle": "MEMBERSHIP & COMMUNITY",
+      "heading": "JOIN OUR PATREON",
+      "benefit1": "🎥 LIVE MATCH REACTIONS",
+      "benefit2": "⭐ LA TERAPIA LIVE EPISODES",
+      "benefit3": "💬 PRIVATE VIP CHAT",
+      "benefit1Full": "🎥 Real-time reactions to every match",
+      "benefit2Full": "⭐ Exclusive episodes of La Terapia en Vivo",
+      "benefit3Full": "💬 Exclusive VIP chat and priority questions",
+      "joinBtn": "JOIN NOW"
+    },
+    "ringsideCollectibles": {
+      "title": "OFFICIAL SPONSOR",
+      "subtitle": "RINGSIDE COLLECTIBLES",
+      "headline": "GET YOUR OFFICIAL FIGURES",
+      "desc": "Use our official affiliate code and receive an immediate discount on your purchase of figures and collectibles.",
+      "codeLabel": "CODE:",
+      "copied": "Copied!",
+      "copy": "Copy",
+      "buy": "BUY NOW"
+    }
+  },
+  "calendar": {
+    "title": "Shows & Events Schedule",
+    "desc": "Keep up to date with the schedule of upcoming live reviews, weekly podcasts and special events on Patreon and YouTube.",
+    "addCalendar": "Add to my calendar",
+    "errorLoading": "Failed to load events schedule. Please retry.",
+    "pleCountdown": "PLE COUNTDOWN",
+    "pleCountdownDesc": "We are very close to the hottest event of summer. Get ready!",
+    "noEventsTitle": "No scheduled broadcasts",
+    "noEventsDesc": "There are no shows scheduled for the next few days. Stay tuned to our social media for updates!",
+    "status": {
+      "upcoming": "Upcoming",
+      "live": "Live",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "type": {
+      "weekly": "Weekly",
+      "ple": "PLE",
+      "special": "Special Event"
+    },
+    "timeLabel": "Local broadcast time:",
+    "calendarAdded": "Event successfully added!",
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    }
+  },
+  "community": {
+    "title": "Community",
+    "desc": "Join our official channels, tune in on your favorite audio platforms and be part of the unfiltered experience.",
+    "audio": {
+      "badge": "Audio Platforms",
+      "title": "Listen wherever you prefer",
+      "desc": "Here you can listen to all 100% Wrestling Podcast programming in audio, now also available in video on Spotify.",
+      "appleBtn": "Listen on Apple Podcasts",
+      "spotifyBtn": "Listen on Spotify"
+    },
+    "patreon": {
+      "badge": "Exclusive Content",
+      "title": "Patreon Premium",
+      "desc": "Access exclusive content every week, such as LA TERAPIA the live podcast, Q&A with member questions, video reactions, live coverage of special PLE events, and much more.",
+      "joinBtn": "Join Patreon"
+    },
+    "discord": {
+      "badge": "Community Chat",
+      "title": "Discord Server",
+      "desc": "Join our official Discord server. Chat live with other wrestling fans during shows and PLEs, share memes and debate the latest wrestling news.",
+      "joinBtn": "Join our Discord"
+    }
+  },
+  "links": {
+    "title": "Sponsors and Affiliate Links",
+    "desc": "Find exclusive offers for the community and support the podcast with your purchases.",
+    "affiliateDisclosure": "Affiliate Disclosure: By purchasing through these official sponsor links, you directly support the production of 100% Wrestling Podcast at no additional cost to you.",
+    "copyCode": "Copy code",
+    "codeCopied": "Code copied",
+    "visitStore": "Visit Store"
+  },
+  "contact": {
+    "title": "Contact & Business Proposals",
+    "desc": "Send us your business proposal, sponsorship details, or message, and we will get back to you as soon as possible.",
+    "form": {
+      "fullName": "Full name",
+      "company": "Company or brand",
+      "email": "Email address",
+      "phone": "Phone number (optional)",
+      "proposalType": "Proposal type",
+      "selectOption": "Select an option...",
+      "budget": "Estimated budget",
+      "message": "Message",
+      "send": "Send proposal",
+      "sending": "Sending...",
+      "limitMessage": "You have reached the limit of 3 submissions per hour. Please try again later."
+    },
+    "validation": {
+      "nameRequired": "Full name is required.",
+      "emailRequired": "Email address is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "messageRequired": "Message is required.",
+      "messageTooShort": "Message must be at least 10 characters long.",
+      "successMessage": "Message sent successfully! We will get in touch with you soon.",
+      "errorMessage": "There was an error sending the form. Please try again."
+    },
+    "sidebar": {
+      "title": "Prefer writing directly?",
+      "desc": "Send us an email directly to our official inbox for business inquiries and proposals.",
+      "sendEmail": "Send Direct Email"
+    }
+  },
+  "footer": {
+    "desc": "Your go-to portal for live reviews of WWE RAW, SmackDown, AEW Dynamite, and in-depth analysis of all Premium Live Events.",
+    "patreonAccess": "Patreon Members Access",
+    "affiliateDisclosure": "Affiliate Links Disclosure: Some links included in this page are affiliate links. 100% Wrestling Podcast might receive a commission at no additional cost to the buyer for any purchases made through them. We greatly appreciate your support in keeping this podcast independent.",
+    "rights": "All rights reserved.",
+    "legalDisclaimer": "Legal Disclaimer: 100% Wrestling Podcast is an independent production and is not officially affiliated, associated, authorized, or endorsed by World Wrestling Entertainment (WWE), All Elite Wrestling (AEW), or Lucha Libre AAA Worldwide. All show and brand names are trademarks of their respective owners.",
+    "sections": {
+      "navigation": "Navigation",
+      "community": "Community",
+      "legal": "Legal"
+    },
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    }
+  }
+}

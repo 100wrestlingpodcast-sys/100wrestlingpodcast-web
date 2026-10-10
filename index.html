@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9669993534894443"
+     crossorigin="anonymous"></script>
+
+    <!-- Primary Meta Tags -->
+    <title>100% Wrestling Podcast | Programas, Patreon y Redes Sociales</title>
+    <meta name="title" content="100% Wrestling Podcast | Programas, Patreon y Redes Sociales" />
+    <meta name="description" content="Encuentra todos los programas, redes sociales, eventos especiales, Patreon, mercancía y links oficiales de 100% Wrestling Podcast." />
+    
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- Mobile App Settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="100% Wrestling" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://100wrestlingpodcast.netlify.app/" />
+    <meta property="og:title" content="100% Wrestling Podcast | Programas, Patreon y Redes Sociales" />
+    <meta property="og:description" content="Encuentra todos los programas, redes sociales, eventos especiales, Patreon, mercancía y links oficiales de 100% Wrestling Podcast." />
+    <meta property="og:image" content="/logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://100wrestlingpodcast.netlify.app/" />
+    <meta property="twitter:title" content="100% Wrestling Podcast | Programas, Patreon y Redes Sociales" />
+    <meta property="twitter:description" content="Encuentra todos los programas, redes sociales, eventos especiales, Patreon, mercancía y links oficiales de 100% Wrestling Podcast." />
+    <meta property="twitter:image" content="/logo.png" />
+    
+    <!-- Robots and Canonical -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://100wrestlingpodcast.netlify.app/" />
+    
+    <!-- Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="bg-white text-gray-900 antialiased font-sans selection:bg-brand-red selection:text-white pb-safe">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register PWA service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
+            .catch(err => console.error('Fallo al registrar el Service Worker:', err));
+        });
+      }
+    </script>
+  </body>
+</html>

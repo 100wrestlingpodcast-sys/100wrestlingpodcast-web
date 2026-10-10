@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+
+  --color-brand-black: #000000; /* Negro puro */
+  --color-brand-gray: #0A0A0A; /* Negro profundo */
+  --color-brand-light-gray: #151515;
+  --color-brand-red: #A30000; /* Rojo intenso */
+  --color-brand-red-hover: #E10600; /* Rojo brillante */
+  --color-brand-gold: #A30000; /* Mapped to red to eliminate gold globally */
+  --color-brand-gold-hover: #E10600;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #111827;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #111827;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F1F3F5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 4px;
+    border: 2px solid #F1F3F5;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+  }
+
+  /* Keyboard focus ring */
+  *:focus-visible {
+    outline: 2px solid var(--color-brand-red-hover);
+    outline-offset: 2px;
+  }
+}
+
+/* Solid Black Cards on White Background */
+.glass-panel {
+  background: #0A0A0A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: #111111;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 20px 35px -5px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(225, 6, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Custom glow animations */
+.glow-red {
+  box-shadow: 0 0 20px rgba(217, 0, 0, 0.2);
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 212, 0, 0.2);
+}
+
+/* Black text stroke for modern button lettering */
+.text-stroke-black {
+  -webkit-text-stroke: 1.2px #000000;
+  text-stroke: 1.2px #000000;
+  paint-order: stroke fill;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* PWA mobile adjustments */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+  .bottom-nav-padding {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Hide scrollbar utility for horizontal swiper */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations respecting user preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modal Animation Utility Classes */
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+.animate-scale-up {
+  animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Premium Podcast Banner Animated Gradient */
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-podcast-premium {
+  background: linear-gradient(-45deg, #872ec4, #2c0e48, #0e2a16, #1db954);
+  background-size: 400% 400%;
+  animation: gradient-move 15s ease infinite;
+}
+
+/* Calendar Swipe Scroll classes (Mobile-only under 768px) */
+@media (max-width: 767px) {
+  .calendar-scroll {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+    scroll-behavior: smooth;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+  }
+
+  .calendar-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .calendar-card-mobile {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 480px) {
+    .calendar-card-mobile {
+      flex: 0 0 78%;
+    }
+  }
+}
