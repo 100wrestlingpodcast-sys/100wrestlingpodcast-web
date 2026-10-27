@@ -234,7 +234,7 @@ function App() {
     document.querySelector('meta[property="twitter:title"]')?.setAttribute('content', meta.title);
     document.querySelector('meta[property="twitter:description"]')?.setAttribute('content', meta.desc);
 
-    const origin = window.location.origin;
+    const origin = 'https://100wrestlingpodcast.com';
     const canonicalHref = origin + (cl === '/' ? '/' : ROUTE_URLS[currentLang][currentTab as keyof typeof ROUTE_URLS.es] || cl);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalHref);
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalHref);

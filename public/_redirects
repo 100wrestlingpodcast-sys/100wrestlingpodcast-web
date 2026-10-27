@@ -1,1 +1,3 @@
+https://100wrestlingpodcast.netlify.app/* https://100wrestlingpodcast.com/:splat 301!
+http://100wrestlingpodcast.netlify.app/* https://100wrestlingpodcast.com/:splat 301!
 /* /index.html 200

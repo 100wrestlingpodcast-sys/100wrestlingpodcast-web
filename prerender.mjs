@@ -11,7 +11,7 @@ const DIST_DIR = fs.existsSync(path.join(ROOT_DIR, 'dist'))
 const PUBLIC_DIR = fs.existsSync(path.join(ROOT_DIR, 'public'))
   ? path.join(ROOT_DIR, 'public')
   : ROOT_DIR;
-const SITE_URL = 'https://100wrestlingpodcast.netlify.app';
+const SITE_URL = 'https://100wrestlingpodcast.com';
 
 // Detect built asset tags from dist/index.html if present
 let assetHeadTags = `    <script type="module" crossorigin src="/assets/index-bz17be1t.js"></script>\n    <link rel="stylesheet" crossorigin href="/assets/index-4eqsrfkb.css" />`;
