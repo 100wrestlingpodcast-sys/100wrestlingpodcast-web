@@ -11,6 +11,7 @@ import { LinksPage } from './pages/LinksPage';
 import { StorePage } from './pages/StorePage';
 import { WatchListenPage } from './pages/WatchListenPage';
 import { ContactPage } from './pages/ContactPage';
+import { AboutPage } from './pages/AboutPage';
 
 import { siteConfig } from './data/siteConfig';
 import { ArrowUp } from 'lucide-react';
@@ -18,6 +19,20 @@ import { useTranslation } from 'react-i18next';
 import './App.css';
 
 const ROUTE_MAP: Record<string, { tab: string; lang: 'es' | 'en' }> = {
+  '/': { tab: 'inicio', lang: 'es' },
+  '/inicio': { tab: 'inicio', lang: 'es' },
+  '/sobre-nosotros': { tab: 'sobre-nosotros', lang: 'es' },
+  '/sobre-nosotros/': { tab: 'sobre-nosotros', lang: 'es' },
+  '/es/sobre-nosotros': { tab: 'sobre-nosotros', lang: 'es' },
+  '/es/sobre-nosotros/': { tab: 'sobre-nosotros', lang: 'es' },
+  '/about': { tab: 'sobre-nosotros', lang: 'en' },
+  '/en/about': { tab: 'sobre-nosotros', lang: 'en' },
+
+  '/calendario': { tab: 'calendario', lang: 'es' },
+  '/comunidad': { tab: 'comunidad', lang: 'es' },
+  '/links': { tab: 'links', lang: 'es' },
+  '/contacto': { tab: 'contacto', lang: 'es' },
+
   '/tienda': { tab: 'tienda', lang: 'es' },
   '/tienda/': { tab: 'tienda', lang: 'es' },
   '/es/tienda': { tab: 'tienda', lang: 'es' },
@@ -50,13 +65,14 @@ const ROUTE_MAP: Record<string, { tab: string; lang: 'es' | 'en' }> = {
   '/en/contact': { tab: 'contacto', lang: 'en' }
 };
 
-const ROUTE_URLS = {
+export const ROUTE_URLS = {
   es: {
     inicio: '/es/inicio',
     'ver-y-escuchar': '/es/ver-y-escuchar',
     calendario: '/es/calendario',
     comunidad: '/es/comunidad',
     tienda: '/tienda',
+    'sobre-nosotros': '/sobre-nosotros',
     links: '/es/links',
     contacto: '/es/contacto'
   },
@@ -66,8 +82,80 @@ const ROUTE_URLS = {
     calendario: '/en/schedule',
     comunidad: '/en/community',
     tienda: '/store',
+    'sobre-nosotros': '/en/about',
     links: '/en/links',
     contacto: '/en/contact'
+  }
+};
+
+const SEO_META: Record<'es' | 'en', Record<string, { title: string; desc: string }>> = {
+  es: {
+    inicio: {
+      title: '100% Wrestling Podcast | Noticias y Reviews de WWE y AEW en Español por Wiseman',
+      desc: 'Podcast #1 de lucha libre en español con El Wiseman. Noticias, análisis sin filtros y reviews en vivo de WWE RAW, SmackDown, AEW Dynamite y Premium Live Events.'
+    },
+    'sobre-nosotros': {
+      title: 'Sobre Nosotros | 100% Wrestling Podcast con Wiseman (WWE y AEW en Español)',
+      desc: 'Conoce la historia de 100% Wrestling Podcast, el programa en español de noticias y reviews de WWE y AEW conducido por Wiseman. Enlaces a YouTube, Apple Podcasts, Instagram y Facebook.'
+    },
+    'ver-y-escuchar': {
+      title: 'Ver y Escuchar | Episodios de 100% Wrestling Podcast en YouTube y Apple Podcasts',
+      desc: 'Escucha y mira todos los episodios de 100% Wrestling Podcast en español con Wiseman. Enlaces directos a YouTube, Apple Podcasts, Spotify y Patreon VIP.'
+    },
+    calendario: {
+      title: 'Calendario de Shows y Reviews en Vivo | 100% Wrestling Podcast',
+      desc: 'Consulta el calendario oficial de transmisiones en vivo de 100% Wrestling Podcast: horarios de reviews de WWE RAW, SmackDown, AEW Dynamite y Premium Live Events.'
+    },
+    comunidad: {
+      title: 'Comunidad Oficial, Patreon y Discord | 100% Wrestling Podcast',
+      desc: 'Únete a la comunidad de 100% Wrestling Podcast en español. Participa en Discord, accede a La Terapia en Vivo en Patreon y síguenos en redes sociales.'
+    },
+    tienda: {
+      title: 'Tienda Oficial y Mercancía | 100% Wrestling Podcast',
+      desc: 'Compra las camisetas, hoodies, gorras y tazas oficiales de 100% Wrestling Podcast. Apoya directamente al podcast de lucha libre en español.'
+    },
+    links: {
+      title: 'Auspiciadores Oficiales y Códigos de Descuento | 100% Wrestling Podcast',
+      desc: 'Aprovecha descuentos exclusivos de 100% Wrestling Podcast en Ringside Collectibles (código 100WRESTLING), NordVPN, Fanatics y Topps.'
+    },
+    contacto: {
+      title: 'Contacto y Propuestas Comerciales | 100% Wrestling Podcast',
+      desc: 'Ponte en contacto con 100% Wrestling Podcast y Wiseman para propuestas comerciales, patrocinios, colaboraciones y consultas de prensa.'
+    }
+  },
+  en: {
+    inicio: {
+      title: '100% Wrestling Podcast | Spanish WWE & AEW News and Reviews by Wiseman',
+      desc: 'Find all 100% Wrestling Podcast shows, WWE & AEW reviews by Wiseman, social media accounts, special events, Patreon and merchandise.'
+    },
+    'sobre-nosotros': {
+      title: 'About Us | 100% Wrestling Podcast with Wiseman (Spanish WWE & AEW Reviews)',
+      desc: 'Learn about 100% Wrestling Podcast, the premier Spanish WWE and AEW news and reviews podcast hosted by Wiseman on YouTube, Apple Podcasts, Instagram and Facebook.'
+    },
+    'ver-y-escuchar': {
+      title: 'Watch & Listen | 100% Wrestling Podcast on YouTube, Apple Podcasts & Spotify',
+      desc: 'Watch and listen to all 100% Wrestling Podcast episodes across YouTube, Apple Podcasts, Spotify and Patreon VIP.'
+    },
+    calendario: {
+      title: 'Live Shows & PLE Schedule | 100% Wrestling Podcast',
+      desc: 'Check the official schedule of upcoming WWE RAW, SmackDown, AEW Dynamite and PLE live reviews on 100% Wrestling Podcast.'
+    },
+    comunidad: {
+      title: 'Official Community, Patreon & Discord | 100% Wrestling Podcast',
+      desc: 'Join the 100% Wrestling Podcast community on Discord, Patreon, Apple Podcasts and Spotify.'
+    },
+    tienda: {
+      title: 'Official Merch & Shop | 100% Wrestling Podcast',
+      desc: 'Shop official 100% Wrestling Podcast shirts, hoodies, caps and drinkware.'
+    },
+    links: {
+      title: 'Official Sponsors & Promo Codes | 100% Wrestling Podcast',
+      desc: 'Get exclusive 100% Wrestling Podcast discounts at Ringside Collectibles, NordVPN, Fanatics and Topps.'
+    },
+    contacto: {
+      title: 'Contact & Business Inquiries | 100% Wrestling Podcast',
+      desc: 'Contact 100% Wrestling Podcast for sponsorships, brand partnerships and business proposals.'
+    }
   }
 };
 
@@ -77,7 +165,6 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  // Detect if running on mobile device vs desktop computer
   useEffect(() => {
     const detectDevice = () => {
       const uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -88,31 +175,24 @@ function App() {
     detectDevice();
   }, []);
 
-  // Resolve current active tab and language from URL pathname
-  let routeInfo = ROUTE_MAP[path];
+  const cleanPath = path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+  let routeInfo = ROUTE_MAP[cleanPath] || ROUTE_MAP[path];
   if (!routeInfo) {
     if (path.startsWith('/en')) {
       routeInfo = { tab: 'inicio', lang: 'en' };
-    } else if (path.startsWith('/es')) {
-      routeInfo = { tab: 'inicio', lang: 'es' };
     } else {
-      const defaultLang = localStorage.getItem('i18n_lang') || (navigator.language.toLowerCase().startsWith('en') ? 'en' : 'es');
-      routeInfo = { tab: 'inicio', lang: defaultLang as 'es' | 'en' };
-      // Redirect root to default language on mount
-      const targetUrl = defaultLang === 'en' ? '/en/home' : '/es/inicio';
-      window.history.replaceState({}, '', targetUrl);
+      routeInfo = { tab: 'inicio', lang: 'es' };
     }
   }
   const activeTab = routeInfo.tab;
   const activeLang = routeInfo.lang;
 
-  // Listen to popstate (browser back/forward)
   useEffect(() => {
     const handlePopState = () => {
       const currentPath = window.location.pathname;
+      const cl = currentPath.length > 1 && currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
       setPath(currentPath);
-      
-      const info = ROUTE_MAP[currentPath];
+      const info = ROUTE_MAP[cl] || ROUTE_MAP[currentPath];
       if (info && info.lang !== i18n.language) {
         i18n.changeLanguage(info.lang);
       }
@@ -121,21 +201,18 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, [i18n]);
 
-  // Sync active language on mount
   useEffect(() => {
     if (activeLang !== i18n.language) {
       i18n.changeLanguage(activeLang);
     }
   }, []);
 
-  // Sync address bar when i18n language is toggled on the same page
   useEffect(() => {
-    const currentLang = i18n.language as 'es' | 'en';
-    let currentTab = 'inicio';
-    const info = ROUTE_MAP[path];
-    if (info) {
-      currentTab = info.tab;
-    }
+    const currentLang = (i18n.language === 'en' ? 'en' : 'es') as 'es' | 'en';
+    const cl = path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+    const info = ROUTE_MAP[cl] || ROUTE_MAP[path];
+    if (info && info.lang === currentLang) return;
+    const currentTab = info ? info.tab : 'inicio';
     const targetUrl = ROUTE_URLS[currentLang][currentTab as keyof typeof ROUTE_URLS['es']];
     if (path !== targetUrl) {
       window.history.replaceState({}, '', targetUrl);
@@ -143,28 +220,26 @@ function App() {
     }
   }, [i18n.language]);
 
-  // Dynamic SEO Metadata and Hreflang alternative tags in head
   useEffect(() => {
-    const currentLang = i18n.language as 'es' | 'en';
-    
-    // 1. Dynamic Title and Description
-    if (currentLang === 'en') {
-      document.title = '100% Wrestling Podcast | Shows, Patreon and Social Media';
-      document.querySelector('meta[name="description"]')?.setAttribute(
-        'content',
-        'Find all 100% Wrestling Podcast shows, social media accounts, special events, Patreon, merchandise and official links.'
-      );
-    } else {
-      document.title = '100% Wrestling Podcast | Programas, Patreon y Redes Sociales';
-      document.querySelector('meta[name="description"]')?.setAttribute(
-        'content',
-        'Encuentra todos los programas, redes sociales, eventos especiales, Patreon, mercancía y links oficiales de 100% Wrestling Podcast.'
-      );
-    }
+    const currentLang = (i18n.language === 'en' ? 'en' : 'es') as 'es' | 'en';
+    const cl = path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+    const currentTab = (ROUTE_MAP[cl] || ROUTE_MAP[path])?.tab || 'inicio';
+    const meta = SEO_META[currentLang]?.[currentTab] || SEO_META.es.inicio;
 
-    // 2. alternate hreflang URL tags
-    const currentTab = ROUTE_MAP[path]?.tab || 'inicio';
+    document.title = meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.desc);
+    document.querySelector('meta[name="title"]')?.setAttribute('content', meta.title);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', meta.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.desc);
+    document.querySelector('meta[property="twitter:title"]')?.setAttribute('content', meta.title);
+    document.querySelector('meta[property="twitter:description"]')?.setAttribute('content', meta.desc);
+
     const origin = window.location.origin;
+    const canonicalHref = origin + (cl === '/' ? '/' : ROUTE_URLS[currentLang][currentTab as keyof typeof ROUTE_URLS.es] || cl);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalHref);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalHref);
+    document.querySelector('meta[property="twitter:url"]')?.setAttribute('content', canonicalHref);
+
     const esUrl = origin + ROUTE_URLS.es[currentTab as keyof typeof ROUTE_URLS.es];
     const enUrl = origin + ROUTE_URLS.en[currentTab as keyof typeof ROUTE_URLS.en];
 
@@ -182,29 +257,20 @@ function App() {
     setAlternateLink('es', esUrl);
     setAlternateLink('en', enUrl);
     setAlternateLink('x-default', esUrl);
-
-    // 3. HTML lang tag attribute
     document.documentElement.setAttribute('lang', currentLang);
-
   }, [path, i18n.language]);
 
-  // Update URL pathname when tabs change manually
   const handleTabChange = (tab: string) => {
-    const currentLang = i18n.language as 'es' | 'en';
+    const currentLang = (i18n.language === 'en' ? 'en' : 'es') as 'es' | 'en';
     const targetUrl = ROUTE_URLS[currentLang][tab as keyof typeof ROUTE_URLS['es']];
     window.history.pushState({}, '', targetUrl);
     setPath(targetUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Monitor scroll height to show back-to-top button
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 400);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -220,14 +286,14 @@ function App() {
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-      } catch (err) {
+      } catch {
         console.log('Compartir cancelado o no disponible.');
       }
     } else {
       try {
         await navigator.clipboard.writeText(window.location.origin + path);
         alert(t('links.codeCopied'));
-      } catch (err) {
+      } catch {
         alert(t('contact.validation.errorMessage'));
       }
     }
@@ -237,6 +303,8 @@ function App() {
     switch (activeTab) {
       case 'inicio':
         return <HomePage setActiveTab={handleTabChange} />;
+      case 'sobre-nosotros':
+        return <AboutPage />;
       case 'ver-y-escuchar':
         return <WatchListenPage />;
       case 'calendario':
@@ -256,7 +324,6 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#0B0B0D] text-[#F7F7F8] selection:bg-brand-red selection:text-white">
-      {/* 1. Desktop / Main Navigation Header */}
       <Header 
         activeTab={activeTab} 
         setActiveTab={handleTabChange} 
@@ -264,12 +331,10 @@ function App() {
         isMobile={isMobile}
       />
 
-      {/* 2. Main Page Render Slot */}
       <main id="main-content" tabIndex={-1} className={`flex-grow outline-none ${isMobile ? 'pb-16' : 'pb-0'}`}>
         {renderActivePage()}
       </main>
 
-      {/* 3. Floating YouTube Action Button - verified destination */}
       <a
         href={siteConfig.youtubeChannelUrl}
         target="_blank"
@@ -286,8 +351,6 @@ function App() {
         </svg>
       </a>
 
-
-      {/* 4. Scroll To Top Button (Desktop only/above floating buttons) */}
       {showScrollTop && !isMobile && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -299,7 +362,6 @@ function App() {
         </button>
       )}
 
-      {/* 5. Mobile Bottom Navigation Bar */}
       {isMobile && (
         <MobileNavigation 
           activeTab={activeTab} 
@@ -307,7 +369,6 @@ function App() {
         />
       )}
 
-      {/* 6. Footer Content */}
       <Footer setActiveTab={handleTabChange} />
     </div>
   );

@@ -51,39 +51,44 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               </h3>
               <ul className="space-y-2 text-xs">
                 <li>
-                  <button onClick={() => setActiveTab('inicio')} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                  <a href="/es/inicio" onClick={(e) => { e.preventDefault(); setActiveTab('inicio'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
                     {t('navigation.inicio')}
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => setActiveTab('ver-y-escuchar')} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                  <a href="/sobre-nosotros" onClick={(e) => { e.preventDefault(); setActiveTab('sobre-nosotros'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                    {t('navigation.sobreNosotros')}
+                  </a>
+                </li>
+                <li>
+                  <a href="/es/ver-y-escuchar" onClick={(e) => { e.preventDefault(); setActiveTab('ver-y-escuchar'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
                     {t('navigation.verYEscuchar')}
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => setActiveTab('calendario')} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                  <a href="/es/calendario" onClick={(e) => { e.preventDefault(); setActiveTab('calendario'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
                     {t('navigation.calendario')}
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => setActiveTab('comunidad')} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                  <a href="/es/comunidad" onClick={(e) => { e.preventDefault(); setActiveTab('comunidad'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
                     {t('navigation.comunidad')}
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => setActiveTab('tienda')} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                  <a href="/tienda" onClick={(e) => { e.preventDefault(); setActiveTab('tienda'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
                     {t('navigation.tienda')}
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => setActiveTab('links')} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                  <a href="/es/links" onClick={(e) => { e.preventDefault(); setActiveTab('links'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
                     {t('navigation.links')}
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => setActiveTab('contacto')} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
+                  <a href="/es/contacto" onClick={(e) => { e.preventDefault(); setActiveTab('contacto'); }} className="hover:text-white transition-colors duration-200 cursor-pointer text-left">
                     {t('navigation.contacto')}
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
