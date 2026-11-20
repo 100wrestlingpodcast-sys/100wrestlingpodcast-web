@@ -172,10 +172,12 @@ function App() {
     const detectDevice = () => {
       const uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
-      const isTouchSmall = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && window.innerWidth < 1024;
-      setIsMobile(uaMobile || isIPadOS || isTouchSmall);
+      const isSmallViewport = window.innerWidth < 1024;
+      setIsMobile(uaMobile || isIPadOS || isSmallViewport);
     };
     detectDevice();
+    window.addEventListener('resize', detectDevice);
+    return () => window.removeEventListener('resize', detectDevice);
   }, []);
 
   // Resolve current active tab and language from URL pathname (normalizing Netlify trailing slashes)

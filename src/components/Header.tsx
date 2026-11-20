@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { logoClassic } from '../utils/assets';
 import { siteConfig } from '../data/siteConfig';
-import { Share2, ChevronDown, Sparkles } from 'lucide-react';
+import { Share2, ChevronDown, Sparkles, Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
@@ -14,9 +14,10 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onShare, isMobile }) => {
   const { t, i18n } = useTranslation();
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on click outside or escape key
+  // Close dropdowns on click outside or escape key
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(event.target as Node)) {
@@ -26,6 +27,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onShare
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsMoreOpen(false);
+        setIsMobileMenuOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -218,9 +220,64 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onShare
             <Sparkles className="w-3.5 h-3.5 text-[#FFD400]" />
             <span>{t('navigation.apoyaPodcast')}</span>
           </a>
+
+          {/* Mobile / Tablet Hamburger Menu Button (right side, < lg only) */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-expanded={isMobileMenuOpen}
+            aria-label={i18n.language === 'en' ? (isMobileMenuOpen ? 'Close menu' : 'Open menu') : (isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú')}
+            className="lg:hidden p-2 sm:p-2.5 rounded-lg border border-white/15 hover:border-brand-red text-white bg-white/5 hover:bg-white/10 active:scale-95 transition-all cursor-pointer shadow-sm"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
 
       </div>
+
+      {/* Mobile / Tablet Hamburger Slide-Down Drawer */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden border-t border-white/10 bg-[#0F0F13]/98 backdrop-blur-xl shadow-2xl animate-fade-in">
+          <nav
+            className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1.5 text-left"
+            aria-label={i18n.language === 'en' ? 'Mobile Navigation' : 'Menú de Navegación'}
+          >
+            {[...primaryNavItems, ...moreItems].map((item) => {
+              const isActive = activeTab === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveTab(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`px-4 py-3 rounded-xl font-display font-bold text-sm uppercase tracking-wider transition-all flex items-center justify-between cursor-pointer ${
+                    isActive
+                      ? 'bg-brand-red text-white shadow-md'
+                      : 'text-white/85 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {isActive && <span className="w-2 h-2 rounded-full bg-white" />}
+                </a>
+              );
+            })}
+
+            <a
+              href={siteConfig.patreonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="md:hidden mt-2 px-4 py-3 rounded-xl bg-gradient-to-r from-brand-red to-[#b91c1c] text-white font-display font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
+            >
+              <Sparkles className="w-4 h-4 text-[#FFD400]" />
+              <span>{t('navigation.apoyaPodcast')}</span>
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
