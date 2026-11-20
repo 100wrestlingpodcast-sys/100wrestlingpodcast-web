@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, Headphones, Calendar, Users, ShoppingBag, MoreHorizontal, Link as LinkIcon, Mail, X } from 'lucide-react';
+import { Home, Headphones, Calendar, Users, ShoppingBag, MoreHorizontal, Link as LinkIcon, Mail, Award, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 interface MobileNavigationProps {
@@ -20,6 +20,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeTab, s
   ];
 
   const moreNavItems = [
+    { id: 'sobre-nosotros', label: t('navigation.sobreNosotros'), icon: Award },
     { id: 'links', label: t('navigation.links'), icon: LinkIcon },
     { id: 'contacto', label: t('navigation.contacto'), icon: Mail },
   ];

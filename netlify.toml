@@ -10,6 +10,19 @@
 [functions]
   node_bundler = "esbuild"
 
+# Redirect netlify.app subdomain to primary domain
+[[redirects]]
+  from = "https://100wrestlingpodcast.netlify.app/*"
+  to = "https://100wrestlingpodcast.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://100wrestlingpodcast.netlify.app/*"
+  to = "https://100wrestlingpodcast.com/:splat"
+  status = 301
+  force = true
+
 # Proxy functions correctly if called without prefix
 [[redirects]]
   from = "/api/latest-live"

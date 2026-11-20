@@ -37,16 +37,17 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onShare
   }, []);
 
   const primaryNavItems = [
-    { id: 'inicio', label: t('navigation.inicio') },
-    { id: 'ver-y-escuchar', label: t('navigation.verYEscuchar') },
-    { id: 'calendario', label: t('navigation.calendario') },
-    { id: 'comunidad', label: t('navigation.comunidad') },
-    { id: 'tienda', label: t('navigation.tienda') },
+    { id: 'inicio', label: t('navigation.inicio'), href: '/es/inicio' },
+    { id: 'ver-y-escuchar', label: t('navigation.verYEscuchar'), href: '/es/ver-y-escuchar' },
+    { id: 'calendario', label: t('navigation.calendario'), href: '/es/calendario' },
+    { id: 'comunidad', label: t('navigation.comunidad'), href: '/es/comunidad' },
+    { id: 'tienda', label: t('navigation.tienda'), href: '/tienda' },
+    { id: 'sobre-nosotros', label: t('navigation.sobreNosotros'), href: '/sobre-nosotros' },
   ];
 
   const moreItems = [
-    { id: 'links', label: t('navigation.links') },
-    { id: 'contacto', label: t('navigation.contacto') },
+    { id: 'links', label: t('navigation.links'), href: '/es/links' },
+    { id: 'contacto', label: t('navigation.contacto'), href: '/es/contacto' },
   ];
 
   const isMoreActive = moreItems.some(item => item.id === activeTab);
@@ -90,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onShare
             return (
               <a
                 key={item.id}
-                href={`#${item.id}`}
+                href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
                   setActiveTab(item.id);
@@ -139,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onShare
                   return (
                     <a
                       key={item.id}
-                      href={`#${item.id}`}
+                      href={item.href}
                       role="menuitem"
                       aria-current={isActive ? 'page' : undefined}
                       onClick={(e) => {

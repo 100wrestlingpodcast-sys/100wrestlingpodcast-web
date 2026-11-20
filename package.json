@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node prerender.mjs",
+    "prerender": "node prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "sync-desktop": "rsync -arv --exclude 'node_modules' --exclude '.git' --exclude 'node-v22.11.0-darwin-arm64' --exclude 'chrome-temp' ./ \"/Users/albertoaliceahernandez/Desktop/100% Wrestling Podcast Web/\""

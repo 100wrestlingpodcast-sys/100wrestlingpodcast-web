@@ -3,18 +3,20 @@ import { initReactI18next } from 'react-i18next';
 import esTranslation from './locales/es.json';
 import enTranslation from './locales/en.json';
 
-// Detect initial language: LocalStorage -> Browser Language -> default 'es'
+// Default to Spanish ('es') for SEO unless URL or explicit user setting requests English ('en')
 const getInitialLanguage = (): string => {
-  const stored = localStorage.getItem('i18n_lang');
-  if (stored === 'es' || stored === 'en') {
-    return stored;
-  }
-  
-  const browserLang = navigator.language || (navigator as any).userLanguage;
-  if (browserLang && browserLang.toLowerCase().startsWith('en')) {
-    return 'en';
-  }
-  
+  try {
+    if (typeof window !== 'undefined') {
+      const p = window.location.pathname;
+      if (p.startsWith('/en') || p === '/store' || p === '/watch-listen' || p === '/about') {
+        return 'en';
+      }
+      const stored = localStorage.getItem('i18n_lang');
+      if (stored === 'es' || stored === 'en') {
+        return stored;
+      }
+    }
+  } catch {}
   return 'es';
 };
 
@@ -28,13 +30,14 @@ i18n
     lng: getInitialLanguage(),
     fallbackLng: 'es',
     interpolation: {
-      escapeValue: false // React already escapes values to prevent XSS
+      escapeValue: false
     }
   });
 
-// Listen to language change to synchronize LocalStorage
 i18n.on('languageChanged', (lng) => {
-  localStorage.setItem('i18n_lang', lng);
+  try {
+    localStorage.setItem('i18n_lang', lng);
+  } catch {}
 });
 
 export default i18n;
