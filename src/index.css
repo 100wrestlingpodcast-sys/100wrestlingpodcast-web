@@ -18,9 +18,9 @@
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color: #111827;
+    background: #0B0B0D !important;
+    background-color: #0B0B0D !important;
+    color: #F7F7F8;
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,9 +29,9 @@
   }
 
   body {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color: #111827;
+    background: #0B0B0D !important;
+    background-color: #0B0B0D !important;
+    color: #F7F7F8;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -46,17 +46,17 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #F1F3F5;
+    background: #0B0B0D;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #D1D5DB;
+    background: #27272A;
     border-radius: 4px;
-    border: 2px solid #F1F3F5;
+    border: 2px solid #0B0B0D;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #9CA3AF;
+    background: #3F3F46;
   }
 
   /* Keyboard focus ring */

@@ -344,9 +344,7 @@ function App() {
         href={siteConfig.youtubeChannelUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`fixed z-40 p-3.5 rounded-full bg-brand-red hover:bg-[#b91c1c] text-white flex items-center justify-center shadow-[0_4px_20px_rgba(215,25,32,0.4)] hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer focus-visible:outline-2 focus-visible:outline-white ${
-          isMobile ? 'bottom-20 right-4' : 'bottom-6 right-6'
-        }`}
+        className="hidden lg:flex fixed bottom-6 right-6 z-40 p-3.5 rounded-full bg-brand-red hover:bg-[#b91c1c] text-white items-center justify-center shadow-[0_4px_20px_rgba(215,25,32,0.4)] hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer focus-visible:outline-2 focus-visible:outline-white"
         title={t('home.watchYouTube', { defaultValue: 'Ver canal de YouTube' })}
         aria-label="Ver canal de YouTube oficial de 100% Wrestling Podcast"
       >

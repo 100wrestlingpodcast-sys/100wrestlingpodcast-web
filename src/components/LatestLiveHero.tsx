@@ -53,7 +53,7 @@ export function LatestLiveHero() {
     return () => { disposed = true; controller?.abort(); clearInterval(interval); };
   }, []);
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-black py-8 sm:py-14 px-4 sm:px-6 flex items-center justify-center shadow-2xl">
+    <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-black py-4 sm:py-14 px-2.5 sm:px-6 flex items-center justify-center shadow-2xl">
       {/* Background: 3D YouTube theme with floating play buttons and dark studio atmosphere */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none select-none opacity-50 mix-blend-screen filter contrast-125"
@@ -72,7 +72,7 @@ export function LatestLiveHero() {
 
       {/* Floating Compact Card: Always 1 column (Title -> Thumbnail -> Watch on YouTube) */}
       <section className="relative z-10 rounded-2xl border border-white/15 bg-[#17171C]/92 backdrop-blur-md overflow-hidden text-white w-full max-w-xl mx-auto shadow-[0_16px_48px_rgba(0,0,0,0.9)]">
-        <div className="p-4 sm:p-5 flex flex-col items-start gap-3">
+        <div className="p-3 sm:p-5 flex flex-col items-start gap-2.5 sm:gap-3">
           {/* Badge & Title on top */}
           <div className="w-full">
             <div className="flex items-center gap-2 mb-1.5">
@@ -109,8 +109,8 @@ export function LatestLiveHero() {
                 fetchPriority="high" 
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102" 
               />
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-brand-red text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+              <div className="absolute inset-0 bg-black/20 sm:bg-black/30 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-brand-red/95 text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
                   <Play className="w-5 h-5 fill-current ml-0.5" />
                 </div>
               </div>

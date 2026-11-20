@@ -180,7 +180,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
   };
 
   return (
-    <div className="flex flex-col gap-12 sm:gap-16 py-6 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full text-left">
+    <div className="flex flex-col gap-7 sm:gap-12 lg:gap-16 py-4 sm:py-8 px-3.5 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full text-left">
       
       <LatestLiveHero />
 
@@ -192,27 +192,27 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
           {isEn ? 'Follow us wherever you prefer' : 'Síguenos donde prefieras'}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
           {/* YouTube - Metallic Crimson Finish */}
           <a
             href={siteConfig.platforms.youtube}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative overflow-hidden rounded-2xl p-4 flex items-center gap-3.5 transition-all duration-300 active:scale-95 group shadow-lg shadow-black/40 border border-[#ff3b47]/30 hover:border-[#ff4d5a]/60 bg-gradient-to-br from-[#2a080a] via-[#1a0507] to-[#120304] hover:shadow-[0_0_25px_rgba(255,30,45,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff3b47]"
+            className="relative overflow-hidden rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 sm:gap-3.5 transition-all duration-300 active:scale-95 group shadow-lg shadow-black/40 border border-[#ff3b47]/30 hover:border-[#ff4d5a]/60 bg-gradient-to-br from-[#2a080a] via-[#1a0507] to-[#120304] hover:shadow-[0_0_25px_rgba(255,30,45,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff3b47]"
             aria-label={isEn ? "100% Wrestling Podcast Official YouTube Channel" : "Canal oficial de YouTube de 100% Wrestling Podcast"}
           >
             {/* Specular metallic light reflection overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/[0.03] to-transparent pointer-events-none" />
             <div className="absolute -top-12 -left-12 w-28 h-28 bg-[#ff1a2b]/25 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
             
-            <div className="relative p-3 rounded-xl bg-gradient-to-br from-[#ff2233] to-[#99000d] text-white shadow-inner shadow-white/30 border border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(255,50,60,0.6)] transition-all duration-300 shrink-0">
-              <svg className="w-6 h-6 fill-current filter drop-shadow-sm" viewBox="0 0 24 24">
+            <div className="relative p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-[#ff2233] to-[#99000d] text-white shadow-inner shadow-white/30 border border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(255,50,60,0.6)] transition-all duration-300 shrink-0">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current filter drop-shadow-sm" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
             </div>
-            <div className="text-left min-w-0 relative z-10">
-              <span className="text-sm font-display font-black text-white uppercase tracking-wider block drop-shadow-sm group-hover:text-red-100 transition-colors">YouTube</span>
-              <span className="text-[11px] text-white/70 truncate block">{isEn ? 'Live, reviews & clips' : 'En vivo, reviews y clips'}</span>
+            <div className="text-center sm:text-left min-w-0 relative z-10">
+              <span className="text-[11px] sm:text-sm font-display font-black text-white uppercase tracking-wider block drop-shadow-sm group-hover:text-red-100 transition-colors">YouTube</span>
+              <span className="hidden sm:block text-[11px] text-white/70 truncate">{isEn ? 'Live, reviews & clips' : 'En vivo, reviews y clips'}</span>
             </div>
           </a>
 
@@ -221,21 +221,21 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
             href={siteConfig.platforms.spotify}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative overflow-hidden rounded-2xl p-4 flex items-center gap-3.5 transition-all duration-300 active:scale-95 group shadow-lg shadow-black/40 border border-[#1ed760]/30 hover:border-[#1ed760]/60 bg-gradient-to-br from-[#062410] via-[#04190b] to-[#021007] hover:shadow-[0_0_25px_rgba(30,215,96,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1ed760]"
+            className="relative overflow-hidden rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 sm:gap-3.5 transition-all duration-300 active:scale-95 group shadow-lg shadow-black/40 border border-[#1ed760]/30 hover:border-[#1ed760]/60 bg-gradient-to-br from-[#062410] via-[#04190b] to-[#021007] hover:shadow-[0_0_25px_rgba(30,215,96,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1ed760]"
             aria-label={isEn ? "100% Wrestling Official Spotify Podcast" : "Podcast oficial en Spotify"}
           >
             {/* Specular metallic light reflection overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/[0.03] to-transparent pointer-events-none" />
             <div className="absolute -top-12 -left-12 w-28 h-28 bg-[#1ed760]/25 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
-            <div className="relative p-3 rounded-xl bg-gradient-to-br from-[#1ed760] to-[#0d7331] text-white shadow-inner shadow-white/30 border border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(30,215,96,0.6)] transition-all duration-300 shrink-0">
-              <svg className="w-6 h-6 fill-current filter drop-shadow-sm" viewBox="0 0 24 24">
+            <div className="relative p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-[#1ed760] to-[#0d7331] text-white shadow-inner shadow-white/30 border border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(30,215,96,0.6)] transition-all duration-300 shrink-0">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current filter drop-shadow-sm" viewBox="0 0 24 24">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.308a.747.747 0 0 1-1.028.248c-2.814-1.72-6.357-2.108-10.53-1.155a.75.75 0 0 1-.336-1.462c4.567-1.042 8.49-.607 11.646 1.341.348.213.46.666.248 1.028zm1.468-3.266a.936.936 0 0 1-1.288.309c-3.22-1.98-8.127-2.553-11.936-1.396a.937.937 0 1 1-.548-1.791c4.356-1.323 9.774-.683 13.463 1.589.412.253.544.792.309 1.289zm.126-3.41c-3.86-2.292-10.228-2.504-13.896-1.39a1.124 1.124 0 1 1-.655-2.152c4.22-1.282 11.258-1.036 15.704 1.603a1.124 1.124 0 0 1-1.153 1.939z"/>
               </svg>
             </div>
-            <div className="text-left min-w-0 relative z-10">
-              <span className="text-sm font-display font-black text-white uppercase tracking-wider block drop-shadow-sm group-hover:text-emerald-100 transition-colors">Spotify</span>
-              <span className="text-[11px] text-white/70 truncate block">{isEn ? 'Audio & video podcast' : 'Audio y video podcast'}</span>
+            <div className="text-center sm:text-left min-w-0 relative z-10">
+              <span className="text-[11px] sm:text-sm font-display font-black text-white uppercase tracking-wider block drop-shadow-sm group-hover:text-emerald-100 transition-colors">Spotify</span>
+              <span className="hidden sm:block text-[11px] text-white/70 truncate">{isEn ? 'Audio & video podcast' : 'Audio y video podcast'}</span>
             </div>
           </a>
 
@@ -244,15 +244,15 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
             href={siteConfig.platforms.apple}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative overflow-hidden rounded-2xl p-4 flex items-center gap-3.5 transition-all duration-300 active:scale-95 group shadow-lg shadow-black/40 border border-[#b257fc]/30 hover:border-[#b257fc]/60 bg-gradient-to-br from-[#240b3b] via-[#170626] to-[#0e0318] hover:shadow-[0_0_25px_rgba(178,87,252,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b257fc]"
+            className="relative overflow-hidden rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 sm:gap-3.5 transition-all duration-300 active:scale-95 group shadow-lg shadow-black/40 border border-[#b257fc]/30 hover:border-[#b257fc]/60 bg-gradient-to-br from-[#240b3b] via-[#170626] to-[#0e0318] hover:shadow-[0_0_25px_rgba(178,87,252,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b257fc]"
             aria-label={isEn ? "100% Wrestling Official Feed on Apple Podcasts" : "Feed oficial en Apple Podcasts"}
           >
             {/* Specular metallic light reflection overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/[0.03] to-transparent pointer-events-none" />
             <div className="absolute -top-12 -left-12 w-28 h-28 bg-[#b257fc]/25 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
-            <div className="relative p-3 rounded-xl bg-gradient-to-br from-[#a742f5] to-[#591b8a] text-white shadow-inner shadow-white/30 border border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(178,87,252,0.6)] transition-all duration-300 shrink-0">
-              <svg className="w-6 h-6 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <div className="relative p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-[#a742f5] to-[#591b8a] text-white shadow-inner shadow-white/30 border border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(178,87,252,0.6)] transition-all duration-300 shrink-0">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 {/* Outer broadcast arc */}
                 <path d="M5.65 18.05A9.25 9.25 0 1 1 18.35 18.05" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
                 {/* Inner broadcast arc */}
@@ -263,9 +263,12 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
                 <path d="M9.6 15.4c0-1.05.95-1.8 2.4-1.8s2.4.75 2.4 1.8l-.65 5.1c-.12.9-.85 1.5-1.75 1.5s-1.63-.6-1.75-1.5l-.65-5.1z" fill="currentColor" />
               </svg>
             </div>
-            <div className="text-left min-w-0 relative z-10">
-              <span className="text-sm font-display font-black text-white uppercase tracking-wider block drop-shadow-sm group-hover:text-purple-100 transition-colors">Apple Podcasts</span>
-              <span className="text-[11px] text-white/70 truncate block">{isEn ? 'High quality audio episodes' : 'Episodios en alta calidad'}</span>
+            <div className="text-center sm:text-left min-w-0 relative z-10">
+              <span className="text-[11px] sm:text-sm font-display font-black text-white uppercase tracking-wider block drop-shadow-sm group-hover:text-purple-100 transition-colors">
+                <span className="sm:hidden">Apple</span>
+                <span className="hidden sm:inline">Apple Podcasts</span>
+              </span>
+              <span className="hidden sm:block text-[11px] text-white/70 truncate">{isEn ? 'High quality audio episodes' : 'Episodios en alta calidad'}</span>
             </div>
           </a>
         </div>
@@ -438,7 +441,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
         {!reviewsLoading && !reviewsError && filteredReviews.length > 0 && (
           <div 
             ref={reviewsScrollRef}
-            className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scroll-smooth custom-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0"
+            className="flex gap-3.5 sm:gap-5 overflow-x-auto pb-2 sm:pb-4 pt-1 snap-x snap-mandatory scroll-smooth no-scrollbar sm:custom-scrollbar -mx-3.5 px-3.5 sm:mx-0 sm:px-0"
           >
             {filteredReviews.map((show) => {
               const displayDate = show.date ? new Date(show.date).toLocaleDateString(isEn ? 'en-US' : 'es-ES', {
@@ -452,7 +455,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
               return (
                 <article 
                   key={show.id}
-                  className="w-[280px] sm:w-[320px] md:w-[350px] shrink-0 snap-start bg-[#17171C] hover:border-brand-red/40 rounded-2xl p-4 sm:p-5 flex flex-col justify-between border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300 text-left group"
+                  className="w-[82vw] max-w-[300px] sm:max-w-none sm:w-[320px] md:w-[350px] shrink-0 snap-start bg-[#17171C] hover:border-brand-red/40 rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300 text-left group"
                 >
                   <div>
                     {/* 16:9 Thumbnail with YouTube Link */}
@@ -460,7 +463,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
                       href={show.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block aspect-video w-full rounded-xl bg-black/80 overflow-hidden border border-white/10 mb-3.5 relative group/thumb cursor-pointer"
+                      className="block aspect-video w-full rounded-xl bg-black/80 overflow-hidden border border-white/10 mb-3 sm:mb-3.5 relative group/thumb cursor-pointer"
                       aria-label={`Ver ${show.title}`}
                     >
                       <img 
@@ -469,9 +472,9 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-105"
                       />
-                      {/* Play Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-brand-red text-white flex items-center justify-center shadow-lg transform group-hover/thumb:scale-110 transition-transform">
+                      {/* Play Overlay: always visible on mobile, hover on desktop */}
+                      <div className="absolute inset-0 bg-black/20 sm:bg-black/40 opacity-100 sm:opacity-0 sm:group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center">
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-brand-red/95 text-white flex items-center justify-center shadow-lg transform group-hover/thumb:scale-110 transition-transform">
                           <Play className="w-5 h-5 fill-current ml-0.5" />
                         </div>
                       </div>

@@ -11,15 +11,16 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeTab, s
   const { t } = useTranslation();
   const [isMoreSheetOpen, setIsMoreSheetOpen] = useState(false);
 
+  // 4 primary tabs + "More" = 5 comfortable thumb-sized items on mobile
   const mainNavItems = [
     { id: 'inicio', label: t('navigation.inicio'), icon: Home },
-    { id: 'ver-y-escuchar', label: t('navigation.verYEscuchar'), icon: Headphones },
     { id: 'calendario', label: t('navigation.calendario'), icon: Calendar },
-    { id: 'comunidad', label: t('navigation.comunidad'), icon: Users },
     { id: 'tienda', label: t('navigation.tienda'), icon: ShoppingBag },
+    { id: 'comunidad', label: t('navigation.comunidad'), icon: Users },
   ];
 
   const moreNavItems = [
+    { id: 'ver-y-escuchar', label: t('navigation.verYEscuchar'), icon: Headphones },
     { id: 'sobre-nosotros', label: t('navigation.sobreNosotros'), icon: Award },
     { id: 'links', label: t('navigation.links'), icon: LinkIcon },
     { id: 'contacto', label: t('navigation.contacto'), icon: Mail },
@@ -107,8 +108,8 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeTab, s
                   <Icon className="w-5 h-5" />
                 </div>
                 <span 
-                  className={`text-[9px] font-display font-bold tracking-tight uppercase transition-all duration-200 mt-0.5 truncate max-w-[56px] ${
-                    isActive ? 'text-brand-red font-black' : 'text-white/50'
+                  className={`text-[10px] font-display font-bold tracking-tight uppercase transition-all duration-200 mt-0.5 truncate max-w-[72px] ${
+                    isActive ? 'text-brand-red font-black' : 'text-white/60'
                   }`}
                 >
                   {item.label}
