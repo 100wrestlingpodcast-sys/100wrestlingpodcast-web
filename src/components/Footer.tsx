@@ -1,22 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { siteConfig } from '../data/siteConfig';
 import { logoWhite } from '../utils/assets';
-import { ShieldAlert } from 'lucide-react';
+import { ShieldAlert, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
 }
 
+type LegalDocType = 'privacy' | 'terms' | 'legal' | null;
+
 export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
   const { t, i18n } = useTranslation();
   const currentYear = new Date().getFullYear();
+  const isEn = i18n.language === 'en';
+  const [activeLegalDoc, setActiveLegalDoc] = useState<LegalDocType>(null);
 
-  const handleLegalClick = (term: string) => {
-    const msg = i18n.language === 'en'
-      ? `${term}: This is a demonstration link of the official legal terms of 100% Wrestling Podcast.`
-      : `${term}: Este es un enlace demostrativo de los términos legales oficiales de 100% Wrestling Podcast.`;
-    alert(msg);
+  const getLegalContent = (doc: Exclude<LegalDocType, null>) => {
+    if (doc === 'privacy') {
+      return {
+        title: isEn ? 'Privacy Policy' : 'Política de Privacidad',
+        paragraphs: isEn
+          ? [
+              `100% Wrestling Podcast (${siteConfig.contactEmail}) respects your privacy and is committed to protecting the personal data you share when using 100wrestlingpodcast.com.`,
+              'Advertising & Cookies (Google AdSense): This website uses Google AdSense to display advertisements. Third-party vendors, including Google, use cookies to serve ads based on a user’s prior visits to this website or other websites. You may opt out of personalized advertising by visiting Google Ads Settings (https://adssettings.google.com).',
+              'Contact Form Data: Information submitted through our Business Proposal / Contact form (name, brand, email, phone, and message) is processed through Netlify Forms strictly to evaluate and respond to your inquiry. We never sell or rent your personal information to third parties.',
+              'External Links & Affiliates: Our site contains links to external platforms (YouTube, Spotify, Apple Podcasts, Patreon, Spreadshop) and affiliate partners (NordVPN, Topps, Ringside Collectibles, Fanatics). Each external site operates under its own privacy policy.',
+              `Contact & Data Requests: To request deletion or correction of any information you have submitted, email us at ${siteConfig.contactEmail}.`
+            ]
+          : [
+              `100% Wrestling Podcast (${siteConfig.contactEmail}) respeta tu privacidad y se compromete a proteger los datos personales que compartas al utilizar 100wrestlingpodcast.com.`,
+              'Publicidad y Cookies (Google AdSense): Este sitio web utiliza Google AdSense para mostrar anuncios. Proveedores terceros, incluido Google, utilizan cookies para mostrar anuncios basados en visitas anteriores a este u otros sitios web. Puedes inhabilitar la publicidad personalizada en la Configuración de anuncios de Google (https://adssettings.google.com).',
+              'Datos del Formulario de Contacto: La información enviada a través de nuestro formulario de contacto comercial (nombre, marca, correo, teléfono y mensaje) se procesa mediante Netlify Forms exclusivamente para evaluar y responder tu solicitud. Nunca vendemos ni alquilamos tus datos a terceros.',
+              'Enlaces Externos y Afiliados: Nuestro portal incluye enlaces a plataformas externas (YouTube, Spotify, Apple Podcasts, Patreon, Spreadshop) y enlaces de afiliados (NordVPN, Topps, Ringside Collectibles, Fanatics). Cada sitio externo se rige por su propia política de privacidad.',
+              `Contacto y Solicitudes: Para solicitar la eliminación o modificación de cualquier dato enviado, escríbenos a ${siteConfig.contactEmail}.`
+            ]
+      };
+    }
+
+    if (doc === 'terms') {
+      return {
+        title: isEn ? 'Terms of Use' : 'Términos de Uso',
+        paragraphs: isEn
+          ? [
+              'By accessing and using 100wrestlingpodcast.com, you agree to use this website for lawful, personal, and non-commercial viewing purposes.',
+              'Broadcast Schedule: All live show dates, times, and special event coverages listed in our calendar are subject to change without prior notice due to broadcast adjustments, holidays, or wrestling promotion schedule updates.',
+              'Intellectual Property: All original logos, audio/video commentary, graphics, and branding of 100% Wrestling Podcast belong to their respective creators. Wrestling promotion names, trademarks, and event titles belong to their respective owners and are referenced strictly for editorial commentary and review purposes.',
+              'External Purchases: Merchandise orders placed through our Spreadshop store or affiliate links are fulfilled and governed by the terms and return policies of those respective retailers.'
+            ]
+          : [
+              'Al acceder y utilizar 100wrestlingpodcast.com, aceptas utilizar este sitio web con fines lícitos, personales y de consulta informativa.',
+              'Programación y Calendario: Las fechas, horarios y coberturas de shows semanales y eventos especiales mostrados en el calendario están sujetos a cambios sin previo aviso por ajustes de transmisión, días festivos o cambios de las promociones de lucha libre.',
+              'Propiedad Intelectual: Los logotipos, comentarios en audio y video, diseños y marca de 100% Wrestling Podcast pertenecen a sus creadores. Los nombres de empresas, marcas registradas y eventos de lucha libre pertenecen a sus respectivos propietarios y se mencionan únicamente con fines informativos, periodísticos y de análisis.',
+              'Compras Externas: Las compras de mercancía realizadas en nuestra tienda de Spreadshop o a través de enlaces afiliados son procesadas y regidas por las políticas de envío y devoluciones de dichas plataformas.'
+            ]
+      };
+    }
+
+    return {
+      title: isEn ? 'Legal Notice & Affiliate Disclosure' : 'Aviso Legal y Transparencia',
+      paragraphs: isEn
+        ? [
+            '100% Wrestling Podcast is an independent wrestling commentary, news, and entertainment media project. We are not affiliated with, endorsed by, or officially connected to WWE, AEW, AAA, or any wrestling promotion covered on our shows.',
+            'Affiliate Disclosure: Some links on this website (such as NordVPN, Topps, Ringside Collectibles, and Fanatics WWE Shop) are affiliate links. If you make a purchase through them, 100% Wrestling Podcast may earn a small commission at no extra cost to you.',
+            `Official Contact: For legal, copyright, or business inquiries, please contact ${siteConfig.contactEmail}.`
+          ]
+        : [
+            '100% Wrestling Podcast es un proyecto independiente de análisis, noticias y entretenimiento sobre lucha libre profesional. No estamos afiliados, patrocinados ni conectados oficialmente con WWE, AEW, AAA ni ninguna promoción cubierta en nuestros programas.',
+            'Transparencia de Afiliados: Algunos enlaces presentes en este sitio web (como NordVPN, Topps, Ringside Collectibles y Fanatics WWE Shop) son enlaces de afiliados. Si realizas una compra a través de ellos, 100% Wrestling Podcast puede recibir una pequeña comisión sin costo adicional para ti.',
+            `Contacto Oficial: Para asuntos legales, derechos de autor o consultas comerciales, contáctanos en ${siteConfig.contactEmail}.`
+          ]
+    };
   };
 
   return (
@@ -141,20 +195,65 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               &copy; {currentYear} 100% Wrestling Podcast. {t('footer.rights')}
             </div>
             <div className="flex gap-4">
-              <button onClick={() => handleLegalClick(t('footer.links.privacy'))} className="hover:text-white transition-colors cursor-pointer">
+              <button onClick={() => setActiveLegalDoc('privacy')} className="hover:text-white transition-colors cursor-pointer">
                 {t('footer.links.privacy')}
               </button>
-              <button onClick={() => handleLegalClick(t('footer.links.terms'))} className="hover:text-white transition-colors cursor-pointer">
+              <button onClick={() => setActiveLegalDoc('terms')} className="hover:text-white transition-colors cursor-pointer">
                 {t('footer.links.terms')}
               </button>
-              <button onClick={() => handleLegalClick(i18n.language === 'en' ? 'Legal Notice' : 'Aviso Legal')} className="hover:text-white transition-colors cursor-pointer">
-                {i18n.language === 'en' ? 'Legal Notice' : 'Aviso Legal'}
+              <button onClick={() => setActiveLegalDoc('legal')} className="hover:text-white transition-colors cursor-pointer">
+                {isEn ? 'Legal Notice' : 'Aviso Legal'}
               </button>
             </div>
           </div>
         </div>
 
       </div>
+
+      {/* Legal Information Modal */}
+      {activeLegalDoc && (() => {
+        const doc = getLegalContent(activeLegalDoc);
+        return (
+          <div
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setActiveLegalDoc(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="legal-modal-title"
+          >
+            <div
+              className="bg-[#111114] border border-white/15 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 text-left text-white shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between gap-4 pb-4 border-b border-white/10">
+                <h3 id="legal-modal-title" className="text-lg sm:text-xl font-display font-black uppercase tracking-tight m-0 text-white">
+                  {doc.title}
+                </h3>
+                <button
+                  onClick={() => setActiveLegalDoc(null)}
+                  className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-colors cursor-pointer"
+                  aria-label={isEn ? 'Close' : 'Cerrar'}
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="flex flex-col gap-4 mt-5 text-xs sm:text-sm text-white/80 leading-relaxed">
+                {doc.paragraphs.map((p, idx) => (
+                  <p key={idx} className="m-0">{p}</p>
+                ))}
+              </div>
+              <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
+                <button
+                  onClick={() => setActiveLegalDoc(null)}
+                  className="px-5 py-2 rounded-lg bg-brand-red hover:bg-[#b91c1c] text-white font-display font-bold text-xs uppercase tracking-wider cursor-pointer transition-colors"
+                >
+                  {isEn ? 'Close' : 'Cerrar'}
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </footer>
   );
 };

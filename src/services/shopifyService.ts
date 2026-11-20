@@ -1,7 +1,7 @@
 import type { ShopifyProduct } from '../types/shopify';
 import staticCatalog from '../data/shopifyCatalog.json';
 
-export const SHOPIFY_STORE_URL = 'https://100wrestlingpodcast.myshopify.com';
+export const SHOPIFY_STORE_URL = 'https://100-wrestling-podcast.myspreadshop.com';
 
 export function getProductUrl(handle: string): string {
   return `${SHOPIFY_STORE_URL}/products/${handle}`;

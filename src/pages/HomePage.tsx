@@ -252,8 +252,15 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
             <div className="absolute -top-12 -left-12 w-28 h-28 bg-[#b257fc]/25 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
             <div className="relative p-3 rounded-xl bg-gradient-to-br from-[#a742f5] to-[#591b8a] text-white shadow-inner shadow-white/30 border border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(178,87,252,0.6)] transition-all duration-300 shrink-0">
-              <svg className="w-6 h-6 fill-current filter drop-shadow-sm" viewBox="0 0 24 24">
-                <path d="M18.84 8.784c-.495-.008-.946.335-1.042.827-.723 3.69-3.957 6.389-7.798 6.389s-7.075-2.699-7.798-6.389a1.05 1.05 0 0 0-1.042-.827c-.63 0-1.127.533-1.065 1.159.852 4.673 4.908 8.157 9.905 8.157s9.053-3.484 9.905-8.157c.062-.626-.435-1.159-1.065-1.159zm-6.84-6.784c-3.313 0-6 2.687-6 6 0 2.802 1.928 5.156 4.542 5.823l-.542 2.177h4l-.542-2.177c2.614-.667 4.542-3.021 4.542-5.823 0-3.313-2.687-6-6-6zm0 2c2.209 0 4 1.791 4 4s-1.791 4-4 4-4-1.791-4-4 1.791-4 4-4z"/>
+              <svg className="w-6 h-6 filter drop-shadow-sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                {/* Outer broadcast arc */}
+                <path d="M5.65 18.05A9.25 9.25 0 1 1 18.35 18.05" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                {/* Inner broadcast arc */}
+                <path d="M8.1 15.6A5.75 5.75 0 1 1 15.9 15.6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                {/* Center head */}
+                <circle cx="12" cy="11.2" r="2.1" fill="currentColor" />
+                {/* Center body/stem */}
+                <path d="M9.6 15.4c0-1.05.95-1.8 2.4-1.8s2.4.75 2.4 1.8l-.65 5.1c-.12.9-.85 1.5-1.75 1.5s-1.63-.6-1.75-1.5l-.65-5.1z" fill="currentColor" />
               </svg>
             </div>
             <div className="text-left min-w-0 relative z-10">
@@ -589,8 +596,40 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
 
 
       {/* =========================================================
-          6. TIENDA OFICIAL SHOPIFY (Sin PWT, datos reales)
+          6. TIENDA OFICIAL SPREADSHOP
          ========================================================= */}
+      <section className="relative overflow-hidden rounded-2xl bg-[#17171C] border border-white/10 p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="flex flex-col gap-2 max-w-2xl text-left">
+          <div className="flex items-center gap-2">
+            <ShoppingBag className="w-5 h-5 text-brand-red" />
+            <span className="px-2 py-0.5 rounded bg-brand-red/20 border border-brand-red/30 text-brand-red text-[10px] font-black uppercase tracking-wider">
+              {isEn ? 'New Official Store' : 'Nueva Tienda Oficial'}
+            </span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-display font-black uppercase text-white tracking-tight m-0">
+            {isEn ? '100% Wrestling Podcast Merch' : 'Mercancía Oficial 100% Wrestling'}
+          </h2>
+          <p className="text-xs sm:text-sm text-white/75 m-0 leading-relaxed">
+            {isEn
+              ? 'Support the podcast directly with official t-shirts, hoodies, mugs and accessories on our Spreadshop store.'
+              : 'Apoya directamente al podcast con camisetas, hoodies, tazas y accesorios oficiales en nuestra tienda de Spreadshop.'}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <a
+            href={siteConfig.merchandise.storeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-xl bg-brand-red hover:bg-[#b91c1c] text-white font-display font-black text-xs uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-[0_4px_14px_rgba(215,25,32,0.35)] active:scale-95"
+          >
+            <span>{isEn ? 'Shop Now' : 'Ir a la Tienda'}</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+      </section>
+
+      {false && (
       <section className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div>
@@ -669,6 +708,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab }) => {
           })}
         </div>
       </section>
+      )}
 
 
       {/* =========================================================

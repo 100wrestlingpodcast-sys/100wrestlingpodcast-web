@@ -30,10 +30,11 @@ export const siteConfig = {
   },
   
   merchandise: {
-    shopifyUrl: "https://100wrestlingpodcast.myshopify.com",
+    shopifyUrl: "https://100-wrestling-podcast.myspreadshop.com",
+    storeUrl: "https://100-wrestling-podcast.myspreadshop.com",
     title_es: "Tienda oficial de 100% Wrestling Podcast",
     title_en: "Official 100% Wrestling Podcast Shop",
-    description_es: "Apoya directamente al podcast con nuestra mercancía oficial en Shopify.",
-    description_en: "Support the podcast directly with our official merchandise on Shopify."
+    description_es: "Apoya directamente al podcast con nuestra mercancía oficial en Spreadshop.",
+    description_en: "Support the podcast directly with our official merchandise on Spreadshop."
   }
 };

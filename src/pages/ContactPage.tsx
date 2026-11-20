@@ -133,18 +133,33 @@ export const ContactPage: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulated API call (prepared for Apps Script/Firebase Function)
+    // Real Netlify Forms submission
     try {
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          // Simulate 95% success rate
-          if (Math.random() > 0.05) {
-            resolve(true);
-          } else {
-            reject(new Error("Timeout or Network Error"));
-          }
-        }, 1500);
+      const encode = (data: Record<string, string>) =>
+        Object.keys(data)
+          .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+          .join('&');
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'contact',
+          fullName: sanitizedName,
+          brandName: sanitizedBrand,
+          email: sanitizedEmail,
+          phone: sanitizeInput(formData.phone),
+          proposalType: formData.proposalType,
+          budget: sanitizeInput(formData.budget),
+          message: sanitizedMessage,
+          consent: formData.consent ? 'yes' : 'no',
+          company_fax_only: formData.company_fax_only
+        })
       });
+
+      if (!response.ok) {
+        throw new Error(`Form submission failed with status ${response.status}`);
+      }
 
       setSubmitStatus('success');
       setFormData(INITIAL_FORM);
@@ -159,11 +174,11 @@ export const ContactPage: React.FC = () => {
     <div className="flex flex-col gap-12 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full text-left">
       
       {/* Page Header */}
-      <section className="border-b border-gray-200 pb-6">
-        <h2 className="text-2xl font-display font-black uppercase text-gray-950 tracking-tight m-0">
+      <section className="border-b border-white/15 pb-6">
+        <h2 className="text-2xl sm:text-3xl font-display font-black uppercase text-white tracking-tight m-0">
           {t('contact.title')}
         </h2>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-sm text-white/80 mt-1.5">
           {t('contact.desc')}
         </p>
       </section>
@@ -245,7 +260,8 @@ export const ContactPage: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
+              <form name="contact" method="POST" data-netlify="true" netlify-honeypot="company_fax_only" onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
+                <input type="hidden" name="form-name" value="contact" />
                 
                 {/* Honeypot Spam Trap (Invisible for users, bots fall for it) */}
                 <input 

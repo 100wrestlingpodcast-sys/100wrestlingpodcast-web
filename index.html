@@ -17,36 +17,48 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#0B0B0D" />
     
     <!-- Mobile App Settings -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="100% Wrestling" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://100wrestlingpodcast.netlify.app/" />
+    <meta property="og:url" content="https://100wrestlingpodcast.com/" />
     <meta property="og:title" content="100% Wrestling Podcast | Programas, Patreon y Redes Sociales" />
     <meta property="og:description" content="Encuentra todos los programas, redes sociales, eventos especiales, Patreon, mercancía y links oficiales de 100% Wrestling Podcast." />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image" content="https://100wrestlingpodcast.com/logo.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://100wrestlingpodcast.netlify.app/" />
+    <meta property="twitter:url" content="https://100wrestlingpodcast.com/" />
     <meta property="twitter:title" content="100% Wrestling Podcast | Programas, Patreon y Redes Sociales" />
     <meta property="twitter:description" content="Encuentra todos los programas, redes sociales, eventos especiales, Patreon, mercancía y links oficiales de 100% Wrestling Podcast." />
-    <meta property="twitter:image" content="/logo.png" />
+    <meta property="twitter:image" content="https://100wrestlingpodcast.com/logo.png" />
     
     <!-- Robots and Canonical -->
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://100wrestlingpodcast.netlify.app/" />
+    <link rel="canonical" href="https://100wrestlingpodcast.com/" />
     
     <!-- Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body class="bg-white text-gray-900 antialiased font-sans selection:bg-brand-red selection:text-white pb-safe">
+  <body class="bg-[#0B0B0D] text-[#F7F7F8] antialiased font-sans selection:bg-brand-red selection:text-white pb-safe">
+    <!-- Hidden static form for Netlify Forms detection in React SPA -->
+    <form name="contact" netlify netlify-honeypot="company_fax_only" hidden>
+      <input type="text" name="fullName" />
+      <input type="text" name="brandName" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="proposalType" />
+      <input type="text" name="budget" />
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="consent" />
+      <input type="text" name="company_fax_only" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>

@@ -19,11 +19,10 @@ import './App.css';
 
 const ROUTE_MAP: Record<string, { tab: string; lang: 'es' | 'en' }> = {
   '/tienda': { tab: 'tienda', lang: 'es' },
-  '/tienda/': { tab: 'tienda', lang: 'es' },
   '/es/tienda': { tab: 'tienda', lang: 'es' },
-  '/en/tienda': { tab: 'tienda', lang: 'es' },
+  '/en/tienda': { tab: 'tienda', lang: 'en' },
   '/store': { tab: 'tienda', lang: 'en' },
-  '/store/': { tab: 'tienda', lang: 'en' },
+  '/es/mercancia': { tab: 'tienda', lang: 'es' },
   '/es/mercandia': { tab: 'tienda', lang: 'es' },
   '/en/merchandise': { tab: 'tienda', lang: 'en' },
 
@@ -33,7 +32,6 @@ const ROUTE_MAP: Record<string, { tab: string; lang: 'es' | 'en' }> = {
   '/en/watch-listen': { tab: 'ver-y-escuchar', lang: 'en' },
 
   '/es': { tab: 'inicio', lang: 'es' },
-  '/es/': { tab: 'inicio', lang: 'es' },
   '/es/inicio': { tab: 'inicio', lang: 'es' },
   '/es/calendario': { tab: 'calendario', lang: 'es' },
   '/es/comunidad': { tab: 'comunidad', lang: 'es' },
@@ -41,14 +39,19 @@ const ROUTE_MAP: Record<string, { tab: string; lang: 'es' | 'en' }> = {
   '/es/contacto': { tab: 'contacto', lang: 'es' },
 
   '/en': { tab: 'inicio', lang: 'en' },
-  '/en/': { tab: 'inicio', lang: 'en' },
   '/en/home': { tab: 'inicio', lang: 'en' },
   '/en/schedule': { tab: 'calendario', lang: 'en' },
+  '/en/calendar': { tab: 'calendario', lang: 'en' },
   '/en/community': { tab: 'comunidad', lang: 'en' },
   '/en/links': { tab: 'links', lang: 'en' },
   '/en/store': { tab: 'tienda', lang: 'en' },
   '/en/contact': { tab: 'contacto', lang: 'en' }
 };
+
+function normalizePath(p: string): string {
+  if (!p || p === '/') return '/';
+  return p.replace(/\/+$/, '');
+}
 
 const ROUTE_URLS = {
   es: {
@@ -88,12 +91,13 @@ function App() {
     detectDevice();
   }, []);
 
-  // Resolve current active tab and language from URL pathname
-  let routeInfo = ROUTE_MAP[path];
+  // Resolve current active tab and language from URL pathname (normalizing Netlify trailing slashes)
+  const normalizedPath = normalizePath(path);
+  let routeInfo = ROUTE_MAP[normalizedPath];
   if (!routeInfo) {
-    if (path.startsWith('/en')) {
+    if (normalizedPath.startsWith('/en')) {
       routeInfo = { tab: 'inicio', lang: 'en' };
-    } else if (path.startsWith('/es')) {
+    } else if (normalizedPath.startsWith('/es')) {
       routeInfo = { tab: 'inicio', lang: 'es' };
     } else {
       const defaultLang = localStorage.getItem('i18n_lang') || (navigator.language.toLowerCase().startsWith('en') ? 'en' : 'es');
@@ -109,7 +113,7 @@ function App() {
   // Listen to popstate (browser back/forward)
   useEffect(() => {
     const handlePopState = () => {
-      const currentPath = window.location.pathname;
+      const currentPath = normalizePath(window.location.pathname);
       setPath(currentPath);
       
       const info = ROUTE_MAP[currentPath];
@@ -132,12 +136,12 @@ function App() {
   useEffect(() => {
     const currentLang = i18n.language as 'es' | 'en';
     let currentTab = 'inicio';
-    const info = ROUTE_MAP[path];
+    const info = ROUTE_MAP[normalizePath(path)];
     if (info) {
       currentTab = info.tab;
     }
     const targetUrl = ROUTE_URLS[currentLang][currentTab as keyof typeof ROUTE_URLS['es']];
-    if (path !== targetUrl) {
+    if (normalizePath(path) !== targetUrl) {
       window.history.replaceState({}, '', targetUrl);
       setPath(targetUrl);
     }
@@ -163,7 +167,7 @@ function App() {
     }
 
     // 2. alternate hreflang URL tags
-    const currentTab = ROUTE_MAP[path]?.tab || 'inicio';
+    const currentTab = ROUTE_MAP[normalizePath(path)]?.tab || 'inicio';
     const origin = window.location.origin;
     const esUrl = origin + ROUTE_URLS.es[currentTab as keyof typeof ROUTE_URLS.es];
     const enUrl = origin + ROUTE_URLS.en[currentTab as keyof typeof ROUTE_URLS.en];

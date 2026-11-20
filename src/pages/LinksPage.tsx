@@ -22,11 +22,11 @@ export const LinksPage: React.FC = () => {
     <div className="flex flex-col gap-12 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full text-left">
       
       {/* Page Header */}
-      <section className="border-b border-gray-200 pb-6">
-        <h2 className="text-2xl font-display font-black uppercase text-gray-950 tracking-tight m-0">
+      <section className="border-b border-white/15 pb-6">
+        <h2 className="text-2xl sm:text-3xl font-display font-black uppercase text-white tracking-tight m-0">
           {t('links.title')}
         </h2>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-sm text-white/80 mt-1.5">
           {t('links.desc')}
         </p>
       </section>
